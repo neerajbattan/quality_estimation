@@ -236,7 +236,7 @@ def readLangs(lang1, lang2, reverse=False):
 # earlier).
 #
 
-MAX_LENGTH = 10
+MAX_LENGTH = 1000
 
 eng_prefixes = (
     "i am ", "i m ",
@@ -269,7 +269,7 @@ def filterPairs(pairs):
 def prepareData(lang1, lang2, reverse=False):
     input_lang, output_lang, pairs = readLangs(lang1, lang2, reverse)
     print("Read %s sentence pairs" % len(pairs))
-    pairs = filterPairs(pairs)
+#    pairs = filterPairs(pairs)
     print("Trimmed to %s sentence pairs" % len(pairs))
     print("Counting words...")
     for pair in pairs:
@@ -281,7 +281,7 @@ def prepareData(lang1, lang2, reverse=False):
     return input_lang, output_lang, pairs
 
 
-input_lang, output_lang, pairs = prepareData('eng', 'fra', True)
+input_lang, output_lang, pairs = prepareData('deu', 'eng', True)
 print(random.choice(pairs))
 
 
@@ -339,6 +339,7 @@ class EncoderRNN(nn.Module):
     def __init__(self, input_size, hidden_size, n_layers=1):
         super(EncoderRNN, self).__init__()
         self.n_layers = n_layers
+#	hidden_size = hidden_size//2
         self.hidden_size = hidden_size
 
         self.embedding = nn.Embedding(input_size, hidden_size)
@@ -393,7 +394,7 @@ class DecoderRNN(nn.Module):
         self.hidden_size = hidden_size
 
         self.embedding = nn.Embedding(output_size, hidden_size)
-        self.gru = nn.GRU(hidden_size, hidden_size)
+        self.gru = nn.GRU(hidden_size, hidden_size//2, bidirectional=True)
         self.out = nn.Linear(hidden_size, output_size)
         self.softmax = nn.LogSoftmax()
 
@@ -686,7 +687,7 @@ def trainIters(encoder, decoder, n_iters, print_every=1000, plot_every=100, lear
             plot_losses.append(plot_loss_avg)
             plot_loss_total = 0
 
-    showPlot(plot_losses)
+#    showPlot(plot_losses)
 
 
 ######################################################################
@@ -696,7 +697,7 @@ def trainIters(encoder, decoder, n_iters, print_every=1000, plot_every=100, lear
 # Plotting is done with matplotlib, using the array of loss values
 # ``plot_losses`` saved while training.
 #
-
+'''
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import numpy as np
@@ -710,7 +711,7 @@ def showPlot(points):
     ax.yaxis.set_major_locator(loc)
     plt.plot(points)
 
-
+'''
 ######################################################################
 # Evaluation
 # ==========
@@ -805,8 +806,9 @@ if use_cuda:
     encoder1 = encoder1.cuda()
     attn_decoder1 = attn_decoder1.cuda()
 
-trainIters(encoder1, attn_decoder1, 75000, print_every=5000)
-
+trainIters(encoder1, attn_decoder1, 75000, print_every=50)
+torch.save(encoder1,'models/final_enc_temp')
+torch.save(attn_decoder1,'models/final_dec_temp')
 ######################################################################
 #
 
@@ -826,11 +828,11 @@ evaluateRandomly(encoder1, attn_decoder1)
 # displayed as a matrix, with the columns being input steps and rows being
 # output steps:
 #
-
+'''
 output_words, attentions = evaluate(
     encoder1, attn_decoder1, "je suis trop froid .")
 plt.matshow(attentions.numpy())
-
+'''
 
 ######################################################################
 # For a better viewing experience we will do the extra work of adding axes
@@ -863,7 +865,7 @@ def evaluateAndShowAttention(input_sentence):
     print('output =', ' '.join(output_words))
     showAttention(input_sentence, output_words, attentions)
 
-
+'''
 evaluateAndShowAttention("elle a cinq ans de moins que moi .")
 
 evaluateAndShowAttention("elle est trop petit .")
@@ -871,7 +873,7 @@ evaluateAndShowAttention("elle est trop petit .")
 evaluateAndShowAttention("je ne crains pas de mourir .")
 
 evaluateAndShowAttention("c est un jeune directeur plein de talent .")
-
+'''
 
 ######################################################################
 # Exercises
