@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ire-ner : Information Retrieval and Extraction - Named Entity Recognition by mdtareque</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Ire-ner : Information Retrieval and Extraction - Named Entity Recognition</h1>
+      <h2 class="project-tagline">IIITH spring 16, IRE Project</h2>
+      <a href="https://github.com/mdtareque/ire-ner" class="btn">View on GitHub</a>
+      <a href="https://github.com/mdtareque/ire-ner/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/mdtareque/ire-ner/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h2>
+<a id="course-information-retrieval-and-extraction-cse474-spring-16" class="anchor" href="#course-information-retrieval-and-extraction-cse474-spring-16" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Course: Information Retrieval and Extraction (CSE474) Spring ‘16</h2>
+
+<p>Professor: Vasudeva Verma
+Mentor: Priyanka Bajaj</p>
+
+<h3>
+<a id="team-members" class="anchor" href="#team-members" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Team Members:</h3>
+
+<ul>
+<li>Md Tareque Khan (201505521)</li>
+<li>Sourav Sarangi (201301014)</li>
+<li>Darshan Agarwal  (201225189)</li>
+</ul>
+
+<h3>Project Links to artifacts</h3>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=V2O7dPacVh8&feature=youtu.be">Youtube Link</a>
+  <li><a href="https://www.dropbox.com/s/16ee2okkfs0l0gm/IRE-Project-Report-Team55.pdf?dl=0">Dropbox Link to Report</a> 
+  <li><a href="http://www.slideshare.net/mdtareque/ire-project-nerteam55spring16iiith-60942095">Slideshare Link to PPT</a>
+</ul>
+
+<h2>
+<a id="project-description" class="anchor" href="#project-description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project Description:</h2>
+
+<p>Task: Named entity recognition is one of the first steps in most IE pipelines. The diverse and noisy style of user generated social media text presents serious challenges, however. Performance still lags far behind than on formal text genres such as newswire. The goal of this shared evaluation is to promote research on NER in noisy text.</p>
+
+<p>Dataset and baseline code was provided by the organizers of <a href="">NER-Shared-Task</a></p>
+
+<h2>
+<a id="overview-of-baseline-code" class="anchor" href="#overview-of-baseline-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview of baseline code</h2>
+<p>
+  Baseline Code consists of
+1. Featurizer.py :Python code that generates features in format as required by
+crfsuite module
+2. Baseline.sh : Runs the feature generation, crfsuite training of model, model
+dump and tagging on test data.
+3. Connlleval.pl : perl script that evaluates the output of testing and calculates
+precision and F1 measure quantities
+</p>
+<h2>
+<a id="modification-done" class="anchor" href="#modification-done" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Modification Done</h2>
+
+<ol>
+<li><p>Code changes</p></li>
+<li><p>Lexicons Changes</p></li>
+</ol>
+
+<h2>
+<a id="output" class="anchor" href="#output" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Output</h2>
+
+<h3>
+<a id="baseline-output" class="anchor" href="#baseline-output" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>baseline output</h3>
+<pre>
+  
+processed 11570 tokens with 356 phrases; found: 244 phrases; correct: 128.
+accuracy: 96.07%; precision: 52.46%; recall: 35.96%; FB1: 42.67
+company: precision: 72.41%; recall: 51.22%; FB1: 60.00 29
+facility: precision: 40.00%; recall: 30.00%; FB1: 34.29 15
+geo-loc: precision: 64.44%; recall: 50.00%; FB1: 56.31 45
+movie: precision: 11.11%; recall: 33.33%; FB1: 16.67 9
+musicartist: precision: 16.67%; recall: 8.33%; FB1: 11.11 6
+other: precision: 35.00%; recall: 11.48%; FB1: 17.28 20
+person: precision: 60.44%; recall: 47.01%; FB1: 52.88 91
+product: precision: 26.67%; recall: 22.22%; FB1: 24.24 15
+sportsteam: precision: 25.00%; recall: 16.67%; FB1: 20.00 12
+tvshow: precision: 50.00%; recall: 12.50%; FB1: 20.00 2
+</pre>
+<h3>
+<a id="build-output" class="anchor" href="#build-output" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>build output</h3>
+
+<pre>
+processed 11570 tokens with 356 phrases; found: 261 phrases; correct: 157.
+accuracy: 96.57%; precision: 60.15%; recall: 44.10%; FB1: 50.89
+company: precision: 70.97%; recall: 53.66%; FB1: 61.11 31
+facility: precision: 50.00%; recall: 30.00%; FB1: 37.50 12
+geo-loc: precision: 68.09%; recall: 55.17%; FB1: 60.95 47
+movie: precision: 33.33%; recall: 33.33%; FB1: 33.33 3
+musicartist: precision: 12.50%; recall: 8.33%; FB1: 10.00 8
+other: precision: 42.42%; recall: 22.95%; FB1: 29.79 33
+person: precision: 68.27%; recall: 60.68%; FB1: 64.25 104
+product: precision: 62.50%; recall: 27.78%; FB1: 38.46 8
+sportsteam: precision: 40.00%; recall: 22.22%; FB1: 28.57 10
+tvshow: precision: 20.00%; recall: 12.50%; FB1: 15.38 5
+  
+</pre>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/mdtareque/ire-ner">Ire-ner : Information Retrieval and Extraction - Named Entity Recognition</a> is maintained by <a href="https://github.com/mdtareque">mdtareque</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
