@@ -1,0 +1,14 @@
+Data files:
+	train.* --- training data: 11.000 new training + 12.000 2016 training
+	dev.* --- 2016 dev set
+
+sentence_level/
+	*.mt --- automatic translation
+	*.pe --- post-edition
+	*.src --- source
+	*.hter --- sentence-level HTER, capped to 1.0. Produced with TERCOM with default settings
+	features/ --- baseline features
+		*.features --- feature set
+		feature_list --- feature description
+
+All text files are tokenized.
